@@ -26,7 +26,7 @@ def page_not_found(e):
 
 def predict():
     features = list([float(x) for x in request.form.values()])
-    if model.predct([features])==[1]:
+    if model.predict([features])==[1]:
         return render_template('home.html', prediction_text="You most probably have a cardiovascular disease... Please get yourself checked by a physician.")
     else:
         return render_template('home.html', prediction_text="You most probably don't have a cardiovascular disease.")
