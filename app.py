@@ -32,11 +32,11 @@ def page_not_found(e):
 # PREDICTION ROUTE
 @app.route('/predict',methods=['POST'])
 def predict():
-    features = list([float(x) for x in request.form.values()]) # THE MODEL NEEDS AN INPUT ARRAY 
+    features = list([int(x) for x in request.form.values()]) # THE MODEL NEEDS AN INPUT ARRAY 
     if model.predict([features])==[1]:
         return render_template('home.html', prediction_text="You most probably have a cardiovascular disease... Please get yourself checked by a physician.")
     else:
-        return render_template('home.html', prediction_text="You most probably don't have a cardiovascular disease.")
+        return render_template('home.html', prediction_text="It's highly unlikely that you have a cardiovascular disease.")
 
 if __name__ == "__main__":
     app.run()
